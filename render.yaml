@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: hisabkitab-store
+    runtime: docker
+    plan: starter
+    envVars:
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: COOKIE_SECURE
+        value: "1"
+      - key: DATABASE_PATH
+        value: /var/data/hisabkitab.db
+      - key: HF_TOKEN
+        sync: false
+      - key: HF_MODEL
+        value: Qwen/Qwen2.5-7B-Instruct
+    disk:
+      name: hisabkitab-data
+      mountPath: /var/data
+      sizeGB: 1
